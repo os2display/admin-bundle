@@ -1,0 +1,10 @@
+{
+    "name": "os2display/admin-bundle",
+    "description": "Os2Display admin",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "Os2Display\\AdminBundle\\": ""
+        }
+    }
+}
