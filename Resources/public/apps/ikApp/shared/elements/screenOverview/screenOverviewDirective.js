@@ -89,6 +89,8 @@ angular.module('ikApp').directive('ikScreenOverview', [
 
           $scope.updateSearch();
         };
+
+        $scope.setSearchFilters();
       },
       templateUrl: 'bundles/os2displayadmin/apps/ikApp/shared/elements/screenOverview/screen-overview-directive.html?' + window.config.version
     };
