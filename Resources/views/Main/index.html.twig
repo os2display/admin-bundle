@@ -67,12 +67,12 @@
   <script src="/proxy/socket.io/socket.io.js"></script>
 
   {% if app.environment == 'prod' %}
-    {% for file in assets.production_js %}
-      <script src="{{ file }}"></script>
+    {% for file in assets.js_prod_assets %}
+      <script src="{{ file ~ '?' ~ version }}"></script>
     {% endfor %}
   {% else %}
     {% for file in assets.js %}
-      <script src="{{ file }}"></script>
+      <script src="{{ file ~ '?' ~ version }}"></script>
     {% endfor %}
   {% endif %}
 
@@ -130,18 +130,24 @@
     });
   </script>
 
-  <!-- Angular modules -->
-  {% for key, module in modules %}
-    {% for file in module.files %}
-      <script src="{{ asset(file ~ '?' ~ version) }}"></script>
+  {% if app.environment == 'prod' %}
+    {% for file in assets.js_prod %}
+      <script src="{{ file ~ '?' ~ version }}"></script>
     {% endfor %}
-  {% endfor %}
+  {% else %}
+    <!-- Angular modules -->
+    {% for key, module in modules %}
+      {% for file in module.files %}
+        <script src="{{ file ~ '?' ~ version }}"></script>
+      {% endfor %}
+    {% endfor %}
 
-  <!-- New angular applications -->
-  {% for key, app in apps %}
-    {% for file in app.files %}
-      <script src="{{ asset(file ~ '?' ~ version) }}"></script>
+    <!-- New angular applications -->
+    {% for key, app in apps %}
+      {% for file in app.files %}
+        <script src="{{ file ~ '?' ~ version }}"></script>
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
+  {% endif %}
 
 {% endblock %}

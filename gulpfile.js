@@ -118,7 +118,7 @@ gulp.task('jshint', 'Runs JSHint on js', function () {
  */
 gulp.task('js', 'Build all custom js files into one minified js file.', function () {
     return gulp.src(adminJsPath)
-    .pipe(concat('app.js'))
+    .pipe(concat('os2displayadmin.js'))
     .pipe(ngAnnotate())
     .pipe(uglify())
     .pipe(rename({extname: ".min.js"}))
