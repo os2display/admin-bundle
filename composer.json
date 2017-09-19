@@ -2,6 +2,10 @@
     "name": "os2display/admin-bundle",
     "description": "Os2Display admin",
     "type": "symfony-bundle",
+    "require": {
+        "os2display/core-bundle": "^1.0",
+        "twig/extensions": "^1.0"
+    },
     "autoload": {
         "psr-4": {
             "Os2Display\\AdminBundle\\": ""
