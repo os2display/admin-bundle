@@ -28,7 +28,7 @@ angular.module('adminApp').controller('AdminUsersController', [
 
     $scope.usersLoading = true;
     $scope.users = null;
-    $scope.max = 50;
+    $scope.max = null;
 
     /**
      * Add a user to the users array.
