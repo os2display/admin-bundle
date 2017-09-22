@@ -16,44 +16,6 @@ form,
     font: $font;
   }
 
-  input[type="text"],
-  input[type="password"],
-  input[type="date"],
-  input[type="datetime"],
-  input[type="email"],
-  input[type="number"],
-  input[type="search"],
-  input[type="tel"],
-  input[type="time"],
-  input[type="url"],
-  textarea {
-    background-color: $white;
-    border: 1px solid transparent;
-    border-radius: .25em;
-    box-sizing: border-box;
-    color: $gray-darkest;
-    display: block;
-    min-height: 3.25em;
-    padding: .85em 1.25em;
-    width: 100%;
-
-    &:focus {
-      color: $gray-darker;
-    }
-
-    &[disabled] {
-      background-color: $gray-lightest;
-    }
-
-    &.is-error {
-      border: 1px solid $error-color;
-    }
-
-    &.edit-menu--background-form-element {
-      border: 1px solid $gray-lighter;
-    }
-  }
-
   &.is-inverted {
     input[type="text"],
     input[type="password"],
