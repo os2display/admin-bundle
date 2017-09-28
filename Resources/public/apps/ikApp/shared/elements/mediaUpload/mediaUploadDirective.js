@@ -35,8 +35,8 @@ angular.module('ikApp').directive('ikMediaUpload', ['busService', 'userService',
         });
         userService.getCurrentUserGroups('mediaUpdateDirective.getCurrentUserGroups');
 
-        var acceptedVideotypes = '|mp4|x-msvideo|x-ms-wmv|quicktime|mpeg|mpg|x-matroska|ogg|webm';
-        var acceptedImagetypes = '|jpg|png|jpeg|bmp|gif';
+        var acceptedVideotypes = ['mp4', 'x-msvideo', 'x-ms-wmv', 'quicktime', 'mpeg', 'mpg', 'x-matroska', 'ogg', 'webm'];
+        var acceptedImagetypes = ['jpg','png','jpeg','bmp','gif'];
 
         // Set accepted media types.
         var acceptedMediatypes = '';
@@ -45,8 +45,17 @@ angular.module('ikApp').directive('ikMediaUpload', ['busService', 'userService',
         } else if ($scope.ikUploadType === 'video') {
           acceptedMediatypes = acceptedVideotypes;
         } else {
-          acceptedMediatypes = acceptedVideotypes + acceptedImagetypes;
+          acceptedMediatypes = acceptedVideotypes.concat(acceptedImagetypes);
         }
+
+        var acceptedMediaTypesText = acceptedMediatypes.reduce(function (previous, value) {
+          if (!previous) {
+            return value;
+          }
+          else {
+            return previous + ", " + value
+          }
+        });
 
         // Create an uploader
         $scope.uploader = new FileUploader({
@@ -55,8 +64,15 @@ angular.module('ikApp').directive('ikMediaUpload', ['busService', 'userService',
           filters: [{
             name: 'mediaFilter',
             fn: function (item /*{File|FileLikeObject}*/) {
-              var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1);
-              return acceptedMediatypes.indexOf(type) !== -1;
+              var type = item.type.slice(item.type.lastIndexOf('/') + 1);
+
+              var accepted = acceptedMediatypes.indexOf(type) !== -1;
+
+              if (!accepted) {
+                $scope.uploadErrorText = item.type + " er ikke en accepteret medietype. Tilladte typer er: " + acceptedMediaTypesText;
+              }
+
+              return accepted;
             }
           }]
         });
@@ -170,11 +186,9 @@ angular.module('ikApp').directive('ikMediaUpload', ['busService', 'userService',
           $scope.uploadErrors = true;
           $scope.uploadInProgress = false;
 
-          if (status === 413) {
-            $scope.uploadErrorText = "Filen var for stor (fejlkode: 413)";
-          } else {
-            $scope.uploadErrorText = "Der skete en fejl (fejlkode: " + status + ")";
-          }
+          $scope.clearQueue();
+
+          $scope.uploadErrorText = "Der skete en fejl under upload af filer (fejlkode: " + status + ")."
         };
 
         /**
@@ -198,14 +212,16 @@ angular.module('ikApp').directive('ikMediaUpload', ['busService', 'userService',
           });
         };
 
+        $scope.hideError = function hideError() {
+          $scope.uploadErrorText = false;
+        };
+
         /**
          * onDestroy.
          */
         $scope.$on('$destory', function () {
           cleanupGetCurrentUserGroups();
         });
-      },
-      link: function () {
       },
       templateUrl: 'bundles/os2displayadmin/apps/ikApp/shared/elements/mediaUpload/media-upload-directive.html?' + window.config.version
     };

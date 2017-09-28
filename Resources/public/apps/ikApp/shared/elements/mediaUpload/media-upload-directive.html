@@ -1,7 +1,19 @@
 <div class="create-media--content" data-nv-file-drop="" uploader="uploader">
+  <div class="message" ng-if="uploadErrorText">
+    <div class="message--inner is-error">
+      <div class="message--content">
+        {{ uploadErrorText }}
+      </div>
+      <div class="message--close" ng-click="hideError()">
+        <i class="icon-default material-icons">close</i>
+      </div>
+    </div>
+  </div>
+
   <section id="create-media--select-files" class="overview--section" data-ng-show="currentStep==1">
     <h1 class="create-media--header">Media - vælg filer</h1>
     <p class="create-media--header-description" data-ng-if="!ikUploadType || ikUploadType === 'image'">Ved upload af video skal videoen indkodes, denne process kan tage flere minutter og afhænger af størrelsen på filen.</p>
+
     <div class="create-media--hidden-input-file">
       <input id="select-files" type="file" nv-file-select uploader="uploader" data-ng-if="queueLimit > 1" multiple />
       <input id="select-files" type="file" nv-file-select uploader="uploader" data-ng-if="!queueLimit || queueLimit === 0" />
@@ -47,7 +59,6 @@
       </div>
     </div>
     <div>
-      <div class="create-media--error-text">{{ uploadErrorText }}</div>
       <div class="create-media--progress" data-ng-show="uploadInProgress && uploader.progress > 0">
         <div class="create-media--progress-bar" ng-style="{ 'width': getProgress() + '%' }">{{ getProgress() }} %</div>
       </div>
