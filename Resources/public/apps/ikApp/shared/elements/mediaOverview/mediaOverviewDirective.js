@@ -41,6 +41,8 @@ angular.module('ikApp').directive('ikMediaOverview', [
         // Media to display.
         $scope.media = [];
 
+        var previousSearchIds = null;
+
         /**
          * Updates the images array by sending a search request.
          */
@@ -60,6 +62,17 @@ angular.module('ikApp').directive('ikMediaOverview', [
               for (var i = 0; i < data.results.length; i++) {
                 ids.push(data.results[i].id);
               }
+
+              // Only extract new results if new results.
+              if (previousSearchIds &&
+                  ids.length === previousSearchIds.length &&
+                  ids.every(function(v,i) { return v === previousSearchIds[i]})
+              ) {
+                $scope.loading = false;
+                return;
+              }
+
+              previousSearchIds = ids;
 
               mediaFactory.loadMediaBulk(ids).then(
                 function success(data) {

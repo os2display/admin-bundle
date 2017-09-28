@@ -111,6 +111,12 @@ angular.module('ikApp').controller('BaseSearchController', [
       return filter;
     };
 
+    $scope.onChangeText = function onChangeText() {
+      $scope.pager.page = 0;
+
+      $scope.updateSearch();
+    };
+
     /**
      * Changes the sort order and updated the screens.
      *
