@@ -16,7 +16,7 @@
   height: 2.1em;
   line-height: 2.1em;
   width: 2.1em;
-  z-index: 1;
+  z-index: 4;
 
   @include border-radius(100%);
 }
@@ -324,8 +324,6 @@ $breakpoint-arrow-switch : 693px;
     font-size: 1em;
     position: absolute;
     right: .5em;
-    z-index: 1;
-
 
     @include transform(rotate(90deg));
 
