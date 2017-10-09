@@ -49,7 +49,10 @@
           </div>
         </div>
 
-        <ik-slide ik-slide="slide" ik-width="{{slide.orientation == 'portrait' ? 168.75 : 300 }}"></ik-slide>
+        <div class="overview--preview">
+          <ik-slide ik-slide="slide" ik-width="{{slide.orientation == 'portrait' ? 168.75 : 300 }}"></ik-slide>
+          <div class="overview--preview-fadeout"></div>
+        </div>
       </div>
       <span class="overview--slide-label">{{slide.title}}</span>
       <span class="overview--slide-date">- {{slide.created_at * 1000 | date:'dd.MM.yyyy'}} -</span>
@@ -71,7 +74,10 @@
           </div>
         </div>
 
-        <ik-slide ik-slide="slide" ik-width="{{slide.orientation == 'portrait' ? 168.75 : 300 }}"></ik-slide>
+        <div class="overview--preview">
+          <ik-slide ik-slide="slide" ik-width="{{slide.orientation == 'portrait' ? 168.75 : 300 }}"></ik-slide>
+          <div class="overview--preview-fadeout"></div>
+        </div>
       </div>
       <span class="overview--slide-label">{{slide.title}}</span> <span class="overview--slide-date">- {{slide.created_at * 1000 | date:'dd.MM.yyyy'}}</span>
     </div>

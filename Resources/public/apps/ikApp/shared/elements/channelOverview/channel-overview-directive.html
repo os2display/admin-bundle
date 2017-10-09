@@ -50,7 +50,10 @@
           </div>
         </div>
 
-        <ik-channel class="overview--channel-container" ik-channel="channel" ik-width="300" ik-single-slide="false" ik-clickable="true"></ik-channel>
+        <div class="overview--preview">
+          <ik-channel class="overview--channel-container" ik-channel="channel" ik-width="300" ik-single-slide="false" ik-clickable="true"></ik-channel>
+          <div class="overview--preview-fadeout"></div>
+        </div>
       </div>
       <span class="overview--channel-label">{{channel.title}}</span>
       <span class="overview--slide-date">- {{channel.created_at * 1000 | date:'dd.MM.yyyy'}} -</span>
@@ -73,7 +76,10 @@
           </div>
         </div>
 
-        <ik-channel class="overview--channel-container" ik-channel="channel" ik-width="300" ik-single-slide="true" ik-clickable="false"></ik-channel>
+        <div class="overview--preview">
+          <ik-channel class="overview--channel-container" ik-channel="channel" ik-width="300" ik-single-slide="true" ik-clickable="false"></ik-channel>
+          <div class="overview--preview-fadeout"></div>
+        </div>
       </div>
       <span class="overview--channel-label">{{channel.title}}</span> <span class="overview--slide-date">- {{channel.created_at * 1000 | date:'dd.MM.yyyy'}}</span>
       <div class="overview--section" data-ng-show="!loading" ng-if="channels.length === 0">

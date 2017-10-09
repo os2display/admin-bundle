@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## In develop
+
+* Minor style fixes.
+
 ## 1.0.8
 
 * Fixed missing error message when trying to upload unsupported media files.

@@ -60,6 +60,10 @@
 
     text-align: left;
 
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
     @include border-radius($border-radius);
     @include box-sizing(border-box);
   }
@@ -88,7 +92,6 @@
     display: inline-block;
     margin-bottom: 1em;
     margin-left: $grid-markup-fix;
-    width: 33.3333%;
 
     text-align: center;
     vertical-align: top;
@@ -100,13 +103,32 @@
 
     border: 1px solid $border-color;
     margin-bottom: .5em;
-    margin-left: 1em;
-    min-height: 15em;
+    margin-left: .5em;
+    margin-right: .5em;
+    min-height: 12em;
     padding: 1em;
+    width: 380px;
 
     @include border-radius($border-radius);
     @include box-sizing(border-box);
     @include strip-link-styles();
+  }
+
+  &--preview {
+    height: 12em;
+    width: 300px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  &--preview-fadeout {
+    background: linear-gradient(0deg, white, rgba(255,255,255,1) 25%, rgba(0,0,0,0.0));
+    z-index: 4;
+    bottom: 0;
+    position: absolute;
+    width: 300px;
+    margin-bottom: 1em;
+    height: 25px;
   }
 
   &--slides-container,
