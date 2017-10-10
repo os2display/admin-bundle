@@ -61,7 +61,7 @@
     text-align: left;
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
     @include border-radius($border-radius);
@@ -84,6 +84,11 @@
   }
 
   &--screen,
+  &--media-single {
+    margin: 0 auto;
+  }
+
+  &--screen,
   &--media-single,
   &--slide,
   &--channel {
@@ -91,7 +96,6 @@
 
     display: inline-block;
     margin-bottom: 1em;
-    margin-left: $grid-markup-fix;
 
     text-align: center;
     vertical-align: top;
