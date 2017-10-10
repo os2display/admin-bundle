@@ -35,8 +35,6 @@
   &--header {
     width: 100%;
     text-align: left;
-    margin-left: 3em;
-    margin-right: 3em;
     margin-bottom: .5em;
 
     &--actions-menu {
@@ -61,7 +59,7 @@
     text-align: left;
 
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 
     @include border-radius($border-radius);
