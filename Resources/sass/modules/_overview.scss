@@ -100,6 +100,8 @@
   }
 
   &--slide-link,
+  &--media-link,
+  &--screen-link,
   &--channel-link {
     position: relative;
 
@@ -329,16 +331,12 @@
   }
 
   &--screen-wrapper {
-    margin: 0;
+    margin: 0 auto;
     background: $gray-lightest;
     background-position: center;
     box-sizing: border-box;
     color: $gray-darker;
     text-align: center;
-
-    @include breakpoint($breakpoint-lap) {
-      margin: 0 1em 1em 0;
-    }
   }
 
   &--screen-text {

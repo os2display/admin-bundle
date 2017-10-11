@@ -48,31 +48,26 @@
           <span class="overview--link-check"></span>
         </span>
         <div data-ng-switch-when="image">
-          <a class="overview--media-link">
-            <img class="overview--media-image" data-ng-src="{{ mediaElement.urls.default_portrait_small }}"/>
-          </a>
-          <div class="overview--media-label">{{mediaElement.name}} (billede)</div>
+          <img class="overview--media-image" data-ng-src="{{ mediaElement.urls.default_portrait_small }}"/>
         </div>
         <div data-ng-switch-when="logo">
-          <a class="overview--media-link">
-            <img class="overview--media-image" data-ng-src="{{ mediaElement.urls.default_portrait_small }}"/>
-          </a>
-          <div class="overview--media-label">{{mediaElement.name}} (logo)</div>
+          <img class="overview--media-image" data-ng-src="{{ mediaElement.urls.default_portrait_small }}"/>
         </div>
         <div data-ng-switch-when="video">
-          <a class="overview--media-link">
-            <div data-ng-if="mediaElement.provider_metadata[0].thumbnails[1].reference">
-              <img class="overview--media-image" data-ng-src="{{ mediaElement.provider_metadata[0].thumbnails[1].reference }}"/>
-            </div>
-            <div data-ng-if="!mediaElement.provider_metadata[0].thumbnails[1].reference">
-              <div class="overview--no-video">Video ikke klar</div>
-            </div>
-          </a>
-          <div class="overview--media-label">{{mediaElement.name}} (video)</div>
+          <div data-ng-if="mediaElement.provider_metadata[0].thumbnails[1].reference">
+            <img class="overview--media-image" data-ng-src="{{ mediaElement.provider_metadata[0].thumbnails[1].reference }}"/>
+          </div>
+          <div data-ng-if="!mediaElement.provider_metadata[0].thumbnails[1].reference">
+            <div class="overview--no-video">Video ikke klar</div>
+          </div>
         </div>
         <div data-ng-switch-default>
           default
         </div>
+      </div>
+      <div>
+        <span class="overview--channel-label">{{ mediaElement.name }} ({{ mediaElement.media_type }})</span>
+        <span class="overview--slide-date">- {{ mediaElement.created_at | date:'dd.MM.yyyy'}}</span>
       </div>
     </div>
     <div class="overview--section" data-ng-show="!loading" ng-if="media.length === 0">
