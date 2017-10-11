@@ -44,9 +44,9 @@
     <div class="spinner overview--spinner" data-ng-show="loading"></div>
     <div class="overview--media-single" data-ng-show="!loading" data-ng-click="mediaOverviewClickMedia(mediaElement)" data-ng-repeat="mediaElement in media">
       <div class="overview--media-link" data-ng-switch data-on="mediaElement.media_type" data-ng-class="{'is-selected': mediaSelected(mediaElement)}">
-        <span class="overview--overlay">
-          <span class="overview--link-check"></span>
-        </span>
+        <i data-icon="media_{{ mediaElement.media_type }}" class="is-small" style="position: absolute; top: .5em; left: .5em; width: 20px; height: 20px;"
+          title="{{ mediaElement.media_type === 'image' ? 'billede' : mediaElement.media_type }}"
+        ></i>
         <div data-ng-switch-when="image">
           <img class="overview--media-image" data-ng-src="{{ mediaElement.urls.default_portrait_small }}"/>
         </div>
@@ -66,7 +66,7 @@
         </div>
       </div>
       <div>
-        <span class="overview--channel-label">{{ mediaElement.name }} ({{ mediaElement.media_type }})</span>
+        <span class="overview--channel-label">{{ mediaElement.name }}</span>
         <span class="overview--slide-date">- {{ mediaElement.created_at | date:'dd.MM.yyyy'}}</span>
       </div>
     </div>

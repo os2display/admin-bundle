@@ -1,0 +1,19 @@
+/**
+ *
+ * Icons
+ *
+ */
+
+$icons: media_image, media_video, media_logo;
+
+// Itterate through $icons array defined in _vars.scss, and if a file name matches the data value use this as background image.
+@each $icon-name in $icons {
+  [data-icon*="#{$icon-name}"] {
+    background-image: url("../icons/#{$icon-name}.svg");
+
+    // Override background image with an inverted version if state class applied.
+    &.is-inverted {
+      background-image: url("../icons/#{$icon-name}-alt.svg");
+    }
+  }
+}

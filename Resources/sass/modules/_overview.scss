@@ -59,7 +59,7 @@
     text-align: left;
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
     @include border-radius($border-radius);
@@ -79,11 +79,6 @@
       margin-left: 1.5em;
       margin-right: 1.5em;
     }
-  }
-
-  &--screen,
-  &--media-single {
-    margin: 0 auto;
   }
 
   &--screen,
