@@ -297,4 +297,9 @@
     position: sticky;
     z-index: 2;
   }
+
+  &--channel-link {
+    max-height: 168.75px;
+    overflow: hidden;
+  }
 }

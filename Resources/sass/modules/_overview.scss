@@ -476,4 +476,8 @@
       display: inline-block !important;
     }
   }
+
+  &--screen-a {
+    @include strip-link-styles();
+  }
 }
