@@ -67,7 +67,7 @@ angular.module('ikApp').controller('SlideEditController', [
       }
 
       var element = document.getElementById('slide-edit-tool');
-      var html = '<div><' + tool.id + ' slide="slide" close="editor.hideEditors()" template="' + tool.template + '"></' + tool.id + '></div>';
+      var html = '<div><' + tool.id + ' slide="slide" close="editor.hideEditors()" ' + (tool.template ? 'template="' + tool.template + '"' : '') + '></' + tool.id + '></div>';
       angular.element(element).html(
         $compile(html)($scope)
       );
