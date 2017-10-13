@@ -2,6 +2,8 @@
 
 ## In develop
 
+## 1.0.9
+
 * Minor style fixes.
 * Fixed issue with change in group for user not being reflected in UI.
 * Removed unnecessary call to get all slides in channelController.
