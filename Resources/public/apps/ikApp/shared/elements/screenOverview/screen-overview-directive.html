@@ -39,18 +39,23 @@
   <div class="overview--screens">
     <div class="spinner overview--spinner" data-ng-show="loading"></div>
     <div data-ng-repeat="screen in screens" class="overview--screen" data-ng-show="!loading">
-      <div class="overview--header">
-        <div class="overview--title">{{screen.title}}</div>
-        <ik-actions-menu class="overview--header-actions-menu" data-ng-if="currentUser.is_admin">
-          <ul>
-            <li><ik-delete id="{{ screen.id }}" type="screen"></ik-delete></li>
-            <li><ik-action-reload-screen id="{{ screen.id }}"></ik-action-reload-screen></li>
-          </ul>
-        </ik-actions-menu>
+      <div class="overview--screen-link">
+        <div class="overview--header">
+          <ik-actions-menu class="overview--header-actions-menu" data-ng-if="currentUser.is_admin">
+            <ul>
+              <li><ik-delete id="{{ screen.id }}" type="screen"></ik-delete></li>
+              <li><ik-action-reload-screen id="{{ screen.id }}"></ik-action-reload-screen></li>
+            </ul>
+          </ik-actions-menu>
+        </div>
+        <a href="/#/screen/{{screen.id}}" class="overview--screen-a">
+          <ik-screen ik-screen="screen"></ik-screen>
+        </a>
       </div>
-      <a href="/#/screen/{{screen.id}}" class="overview--screen-link">
-        <ik-screen ik-screen="screen"></ik-screen>
-      </a>
+      <div class="overview--info-texts">
+        <span class="overview--channel-label">{{screen.title}}</span>
+        <span class="overview--slide-date">- {{ screen.created_at * 1000 | date:'dd.MM.yyyy'}}</span>
+      </div>
     </div>
     <div class="overview--section" data-ng-show="!loading" ng-if="screens.length === 0">
       Ingen resultater.

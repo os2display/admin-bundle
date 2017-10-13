@@ -75,10 +75,7 @@ angular.module('adminApp').controller('AdminGroupController', [
             });
 
             if (user.id === userService.getCurrentUser().id) {
-              busService.$emit('log.info', {
-                timeout: 10000,
-                msg: $translate('user.messages.current_user_updated')
-              });
+              userService.updateCurrentUser();
             }
 
             $scope.baseRemoveElementFromList($scope.users, user, 'id');

@@ -15,6 +15,7 @@
 .create-slide {
 
   &--editing-template {
+    overflow: hidden;
     position: relative;
   }
 
@@ -295,5 +296,10 @@
     margin-top: 2em;
     position: sticky;
     z-index: 2;
+  }
+
+  &--channel-link {
+    max-height: 168.75px;
+    overflow: hidden;
   }
 }
