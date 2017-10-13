@@ -4,8 +4,8 @@
  */
 
 angular.module('adminApp').controller('PopupDeleteGroup', [
-  'busService', '$scope', '$timeout', 'close', '$controller', 'group', '$filter',
-  function (busService, $scope, $timeout, close, $controller, group, $filter) {
+  'busService', '$scope', '$timeout', 'close', '$controller', 'group', '$filter', 'userService',
+  function (busService, $scope, $timeout, close, $controller, group, $filter, userService) {
     'use strict';
 
     // Extend BaseController.
@@ -47,6 +47,8 @@ angular.module('adminApp').controller('PopupDeleteGroup', [
             timeout: 5000,
             msg: $translate('group.messages.group_deleted')
           });
+
+          userService.updateCurrentUser();
 
           close($scope.group);
         },
