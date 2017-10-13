@@ -14,21 +14,7 @@ angular.module('ikApp').controller('ChannelController', [
     $controller('BaseEntityController', {$scope: $scope, entityType: 'channel'});
 
     $scope.steps = 4;
-    $scope.slides = [];
     $scope.channel = {};
-
-    // Get all slides.
-    slideFactory.getSlides().then(
-      function (data) {
-        $scope.slides = data;
-      },
-      function error(reason) {
-        busService.$emit('log.error', {
-          'cause': reason,
-          'msg': 'Hentning af slides fejlede'
-        });
-      }
-    );
 
     // Days, for use with schedule day checklist
     // Follows the javascript  Date.getDay()  numbers for days.
