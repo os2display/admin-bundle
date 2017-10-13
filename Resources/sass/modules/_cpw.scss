@@ -49,6 +49,9 @@
   margin-bottom: 2rem;
   padding: 1rem;
 
+  display: flex;
+  flex-wrap: wrap;
+
   @include border-radius(.4rem);
 
   &:last-child {
@@ -179,6 +182,10 @@
 .cpw--add-channels {
   margin-bottom: 2em;
 
+  .preview--channel-display {
+    max-height: 112.5px;
+  }
+
   &-search[type="search"] { // Override default search form.
     @extend %cpw--text;
     @extend %cpw--search;
@@ -197,7 +204,6 @@
       font-size: .9rem;
       padding-right: 1rem;
       vertical-align: top;
-      width: 50%;
 
       // todo Move this styling to overview stylesheet if we use this styling on all pages.
       ik-channel {
@@ -211,6 +217,7 @@
       display: inline-block;
       font-size: .9rem;
       width: 50%;
+      min-width: 100px;
     }
 
     &-meta {
@@ -221,6 +228,7 @@
       @extend %button--action;
 
       padding: .3rem;
+      width: 100%;
     }
   }
 
@@ -290,6 +298,10 @@
 .cpw--selected-channels {
   margin-bottom: 2em;
 
+  .preview--channel-display {
+    max-height: 112.5px;
+  }
+
   &-search[type="search"] {
     @extend %cpw--text;
     @extend %cpw--search;
@@ -322,6 +334,7 @@
       display: inline-block;
       font-size: .9rem;
       width: 50%;
+      min-width: 100px;
     }
 
     &-meta {
@@ -330,6 +343,8 @@
 
     &-action {
       @extend %button--action-warning;
+
+      width: 100%;
 
       padding: .3rem;
     }

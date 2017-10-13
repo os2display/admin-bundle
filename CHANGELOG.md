@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## In develop
+
+## 1.0.9
+
+* Minor style fixes.
+* Fixed issue with change in group for user not being reflected in UI.
+* Removed unnecessary call to get all slides in channelController.
+
 ## 1.0.8
 
 * Fixed missing error message when trying to upload unsupported media files.
