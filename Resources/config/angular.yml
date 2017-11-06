@@ -22,16 +22,12 @@ assets:
     - bundles/os2displayadmin/assets/libs/angular-modal-service.min.js
     - bundles/os2displayadmin/assets/libs/angular-translate.min.js
     - bundles/os2displayadmin/assets/libs/angular-translate-loader-static-files.min.js
-    - bundles/os2displayadmin/assets/libs/quill.min.js
-    - bundles/os2displayadmin/assets/libs/ng-quill.min.js
   css:
     - bundles/os2displayadmin/css/colorpicker.css
     - bundles/os2displayadmin/css/jquery.datetimepicker.css
     - bundles/os2displayadmin/css/angular-tooltips.min.css
     - bundles/os2displayadmin/assets/build/styles.min.css
     - bundles/os2displayadmin/css/styleguide.css
-    - bundles/os2displayadmin/css/quill.core.css
-    - bundles/os2displayadmin/css/quill.snow.css
   js_prod_assets:
     - bundles/os2displayadmin/assets/build/assets.min.js
   js_prod:
@@ -193,7 +189,6 @@ apps:
       - itkDateComponent
       - itkDigitalClockComponent
       - toolsModule
-      - ngQuill
 
   timelineApp:
     container: true
