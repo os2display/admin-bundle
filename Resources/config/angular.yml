@@ -2,6 +2,7 @@ assets:
   js:
     - bundles/os2displayadmin/assets/libs/jquery.min.js
     - bundles/os2displayadmin/assets/libs/angular.min.js
+    - bundles/os2displayadmin/assets/libs/angular-sanitize.min.js
     - bundles/os2displayadmin/assets/libs/angular-animate.min.js
     - bundles/os2displayadmin/assets/libs/angular-route.min.js
     - bundles/os2displayadmin/assets/libs/moment.min.js
@@ -166,6 +167,7 @@ apps:
       - mainModule
       - ngRoute
       - ngAnimate
+      - ngSanitize
       - angularFileUpload
       - colorpicker.module
       - datetimePicker

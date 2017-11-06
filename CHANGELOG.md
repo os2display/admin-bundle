@@ -2,6 +2,10 @@
 
 ## In develop
 
+## 1.0.10
+
+* Added ngSanitize.
+
 ## 1.0.9
 
 * Minor style fixes.
