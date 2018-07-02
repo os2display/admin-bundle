@@ -2,6 +2,10 @@
 
 ## In develop
 
+## 1.0.11
+
+* Merged PR: https://github.com/os2display/admin-bundle/pull/4
+
 ## 1.0.10
 
 * Added ngSanitize.
