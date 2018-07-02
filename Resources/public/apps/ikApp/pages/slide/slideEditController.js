@@ -45,6 +45,7 @@ angular.module('ikApp').controller('SlideEditController', [
       hideEditors: function hideEditors() {
         busService.$emit('bodyService.removeClass', 'is-locked');
         $scope.editor.editorOpen = false;
+        $scope.selectedTool = null;
 
         var element = document.getElementById('slide-edit-tool');
         angular.element(element).html(
@@ -66,8 +67,17 @@ angular.module('ikApp').controller('SlideEditController', [
         tool.id = 'base-editor';
       }
 
+      $scope.selectedTool = tool;
+
       var element = document.getElementById('slide-edit-tool');
-      var html = '<div><' + tool.id + ' slide="slide" close="editor.hideEditors()" ' + (tool.template ? 'template="' + tool.template + '"' : '') + '></' + tool.id + '></div>';
+      var html =
+        '<div><' +
+        tool.id +
+        ' slide="slide" close="editor.hideEditors()" ' +
+        (tool.template ? 'template="' + tool.template + '"' : '') +
+        ' ' +
+        'tool="selectedTool"' +
+        '></' + tool.id + '></div>';
       angular.element(element).html(
         $compile(html)($scope)
       );

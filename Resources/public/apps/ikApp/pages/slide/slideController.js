@@ -15,7 +15,7 @@ angular.module('ikApp').controller('SlideController', ['$scope', '$controller', 
     $scope.steps = 6;
     $scope.slide = {};
     $scope.templates = [];
-    templateFactory.getSlideTemplates().then(
+    templateFactory.getEnabledSlideTemplates().then(
       function success(data) {
         for (var key in data) {
           if (data.hasOwnProperty(key)) {
@@ -30,12 +30,6 @@ angular.module('ikApp').controller('SlideController', ['$scope', '$controller', 
         });
       }
     );
-    $scope.channels = [];
-
-    // Get all channels for step 6
-    channelFactory.getChannels().then(function (data) {
-      $scope.channels = data;
-    });
 
     // Setup the editor.
     $scope.editor = {

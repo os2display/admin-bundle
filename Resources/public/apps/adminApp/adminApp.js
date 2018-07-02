@@ -95,7 +95,7 @@ angular.module('adminApp').service('adminAppSetup', [
           title: 'Brugere',
           path: '#/admin/users',
           classes: 'admin-users',
-          activeFilter: '/admin/user',
+          activeFilter: '/admin/users',
           group: 'left',
           weight: 2
         });
@@ -106,7 +106,7 @@ angular.module('adminApp').service('adminAppSetup', [
           title: 'Grupper',
           path: '#/admin/groups',
           classes: 'overview-right',
-          activeFilter: '/admin/group',
+          activeFilter: '/admin/groups',
           group: 'left',
           weight: 3
         });
