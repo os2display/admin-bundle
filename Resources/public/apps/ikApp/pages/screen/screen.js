@@ -48,7 +48,7 @@ angular.module('ikApp').controller('ScreenController', ['$scope', '$controller',
           },
           function (reason) {
             if (reason === 404) {
-              templateFactory.getScreenTemplates().then(
+              templateFactory.getEnabledScreenTemplates().then(
                 function success(data) {
                   $scope.screen.template = angular.copy(data[0]);
                   $scope.screen.orientation = data[0].orientation;
@@ -167,7 +167,7 @@ angular.module('ikApp').controller('ScreenController', ['$scope', '$controller',
       }
       else {
         // Fallback to default tools.
-        $scope.toolbarTemplate = 'bundles/os2displayadmin/apps/ikApp/shared/toolbars/' + tool.name + '.html?' + window.config.version;
+        $scope.toolbarTemplate = 'bundles/os2displayadmin/apps/ikShared/toolbars/' + tool.name + '.html?' + window.config.version;
       }
       $scope.region = tool.region;
       $scope.displayToolbar = true;
