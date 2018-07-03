@@ -1,10 +1,10 @@
 /**
  * @file
- * Contains the admin sharing controller.
+ * Contains the admin templates controller.
  */
 
 /**
- * Admin sharing controller.
+ * Admin templates controller.
  */
 angular.module('ikApp').controller('AdminTemplatesController', ['busService', 'templateFactory', '$scope',
   function (busService, templateFactory, $scope) {
@@ -16,7 +16,7 @@ angular.module('ikApp').controller('AdminTemplatesController', ['busService', 't
     $scope.enabledScreenTemplates = [];
     $scope.enabledSlideTemplates = [];
 
-    templateFactory.getAllScreenTemplates().then(
+    templateFactory.getScreenTemplates().then(
       function success(data) {
         $scope.screenTemplates = data;
 
@@ -35,7 +35,7 @@ angular.module('ikApp').controller('AdminTemplatesController', ['busService', 't
         });
       }
     );
-    templateFactory.getAllSlideTemplates().then(
+    templateFactory.getSlideTemplates().then(
       function success(data) {
         $scope.slideTemplates = data;
 

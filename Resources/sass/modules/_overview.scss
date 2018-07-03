@@ -455,7 +455,8 @@
   }
 
   &--groups {
-    margin-bottom: 12px;
+    max-width: 75em;
+    margin: 0 auto 12px;
   }
 
   &--checkboxes {

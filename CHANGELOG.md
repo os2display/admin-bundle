@@ -1,6 +1,23 @@
 # CHANGELOG
 
-## In develop
+## 1.1.0
+
+* Made media upload buttons sticky.
+* Fixed datetime pickers.
+* Removed os2display requirements.
+* Added itk-header to allow injections into pages for decoupled bundles.
+* Made datepicker configurable.
+* Moved BaseApiController to mainModule.
+* Removed unused call to get all channels in slide create.
+* Moved shared components from ikApp to the module ikShared, so it can be injected in other apps.
+* Fixed issue with missing slide/screen templates.
+* Fixed submenu code to activate sub menu based on first part of path.
+* Fixed active-filter for admin/users and admin/groups.
+* Updated npm packages.
+* Fixed z-index for "continue" button in slide/channel create.
+* Fixed styling for group filter in overviews.
+* Hide groups in overviews when user is not in a group.
+* Added access to tool config from json files, to allow configurable tools.
 
 ## 1.0.11
 

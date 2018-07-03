@@ -3,7 +3,7 @@
  * Base Api controller.
  */
 
-angular.module('adminApp').controller('BaseApiController', [
+angular.module('mainModule').controller('BaseApiController', [
   'busService', '$scope', '$controller', '$timeout', '$q',
   function (busService, $scope, $controller, $timeout, $q) {
     'use strict';

@@ -236,7 +236,8 @@
   }
 
   &--form {
-    margin: 0;
+    max-width: 50em;
+    margin: 0 auto;
   }
 
   &--title[type="text"] {
@@ -244,5 +245,10 @@
     display: inline-block;
     width: 47%;
     margin-right: 2%;
+  }
+
+  &--button-area {
+    position: sticky;
+    bottom: -25px;
   }
 }
