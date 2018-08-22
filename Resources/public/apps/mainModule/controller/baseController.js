@@ -63,6 +63,16 @@ angular.module('mainModule').controller('BaseController', ['$scope', 'userServic
     };
 
     /**
+     * Can the entity update roles?
+     *
+     * @param entity
+     * @return {*}
+     */
+    $scope.baseCanUpdateRoles = function baseCanUpdateRoles(entity) {
+      return hasPermission(entity, 'can_update_roles');
+    };
+
+    /**
      * Can the entity be deleted?
      *
      * @param entity

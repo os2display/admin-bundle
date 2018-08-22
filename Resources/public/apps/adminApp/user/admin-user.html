@@ -57,7 +57,7 @@
     </article>
     <article class="grid--item">
       <box heading="{{ 'role.heading' | translate }}">
-        <div class="button-icon-link has-spacing-after" ng-click="showAddRoleModal()" ng-if="baseCanUpdate(user)">
+        <div class="button-icon-link has-spacing-after" ng-click="showAddRoleModal()" ng-if="baseCanUpdateRoles(baseCurrentUser)">
           <i class="icon-rounded material-icons">security</i>
           <span class="button-text has-spacing-before">{{ 'common.action.add_role' | translate }}</span>
         </div>
