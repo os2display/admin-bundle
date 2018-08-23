@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.1
+
+* Merged https://github.com/os2display/admin-bundle/pull/6: Only display the add role modal if the user has admin privileges.
+
 ## 1.1.0
 
 * Made media upload buttons sticky.

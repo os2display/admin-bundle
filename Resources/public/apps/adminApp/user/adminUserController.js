@@ -29,18 +29,25 @@ angular.module('adminApp').controller('AdminUserController', [
     var addRoleToDisplayList = function addRoleToDisplayList(key, role) {
       var actions = [];
 
-      if ($scope.baseCanUpdate($scope.user)) {
+      // Determine actions the user is allowed to perform.
+      if ($scope.baseCanUpdateRoles($scope.baseCurrentUser)) {
         actions.push({
           title: $translate('user.action.remove_role'),
           click: $scope.removeRoleFromUser,
           entity: key
         });
       }
+
       var newRole = {
         id: key,
-        title: role,
-        actions: actions
+        title: role
       };
+
+      // We only add the actions if they are actually there.
+      if (actions.length > 0) {
+        newRole.actions = actions;
+      }
+
       $scope.userRoles.push(newRole);
     };
 
