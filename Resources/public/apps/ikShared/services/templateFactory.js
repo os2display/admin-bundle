@@ -12,8 +12,8 @@ angular.module('ikShared').factory('templateFactory', [
     'use strict';
 
     var factory = {};
-    var slideTemplates = null;
-    var screenTemplates = null;
+    var slideTemplates = OS2DISPLAY_TEMPLATES.slides;
+    var screenTemplates = OS2DISPLAY_TEMPLATES.screens;
 
     /**
      * Gets slide templates from cache or symfony.

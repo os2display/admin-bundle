@@ -20,18 +20,13 @@ class MainController extends Controller
      */
     public function indexAction()
     {
-        // Add paths to css files for activated templates.
-        $templates = array();
-        $slideTemplates = $this->container->get('os2display.template_service')
-            ->getEnabledSlideTemplates();
-        foreach ($slideTemplates as $template) {
-            $templates[] = $template->getPathCss();
-        }
-        $screenTemplates = $this->container->get('os2display.template_service')
-            ->getEnabledScreenTemplates();
-        foreach ($screenTemplates as $template) {
-            $templates[] = $template->getPathCss();
-        }
+        $templateService = $this->container->get('os2display.template_service');
+        $serializer = $this->container->get('jms_serializer');
+
+        $templateRenderArray = [
+            'screens' => json_decode($serializer->serialize($templateService->getAllScreenTemplates(), 'json', SerializationContext::create()->setGroups(array('api')))),
+            'slides' => json_decode($serializer->serialize($templateService->getAllSlideTemplates(), 'json', SerializationContext::create()->setGroups(array('api')))),
+        ];
 
         // Get current user.
         $user = $this->getUser();
@@ -84,7 +79,8 @@ class MainController extends Controller
                 'apps' => $mergedApps,
                 'bootstrap' => $mergedBootstrap,
                 'modules' => $mergedModules,
-                'templates' => $templates,
+                'templates' => $templateRenderArray,
+                'jsonTemplates' => json_encode($templateRenderArray),
                 'user' => $user
             ]
         );

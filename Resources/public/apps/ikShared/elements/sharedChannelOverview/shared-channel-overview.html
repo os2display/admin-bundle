@@ -19,18 +19,15 @@
 
   <div class="overview--channels">
     <div class="spinner overview--spinner" data-ng-show="loading"></div>
-    <div class="overview--channel" data-ng-repeat="channel in channels" data-ng-if="!ikOverlay && !loading">
-      <ik-shared-channel class="overview--channel-container" data-ng-click="clickSharedChannel(channel, index.index)" ik-channel="channel" ik-width="300" ik-sharing-index="index.index" ik-single-slide="{{ikOverlay}}" ik-clickable="true"></ik-shared-channel>
-      <div>{{channel.title}}</div>
-    </div>
-    <div class="overview--channel" data-ng-repeat="channel in channels" data-ng-if="ikOverlay && !loading">
-      <div class="overview--channel-link" data-ng-click="clickSharedChannel(channel, index.index)" data-ng-class="{'is-selected': channelSelected(channel)}">
-       <span class="overview--overlay">
-          <span class="overview--link-check"></span>
-        </span>
+    <div class="overview--channel" data-ng-repeat="channel in channels" data-ng-if="!loading">
+      <div class="overview--channel-link">
+        <div class="overview--preview">
+          <ik-shared-channel class="overview--channel-container" data-ng-click="clickSharedChannel(channel, index.index)" ik-channel="channel" ik-width="300" ik-sharing-index="index.index" ik-single-slide="true" ik-clickable="true"></ik-shared-channel>
+        </div>
+        <div class="overview--info-texts">
+          <div class="overview--channel-label">{{channel.title}}</div>
+        </div>
       </div>
-      <ik-shared-channel class="overview--channel-container" data-ng-click="clickSharedChannel(channel, index.index)" ik-channel="channel" ik-width="300" ik-sharing-index="index.index" ik-single-slide="{{ikOverlay}}"></ik-shared-channel>
-      <div>{{channel.title}}</div>
     </div>
     <div class="overview--section" data-ng-show="!loading" ng-if="channels.length === 0">
       Ingen resultater.

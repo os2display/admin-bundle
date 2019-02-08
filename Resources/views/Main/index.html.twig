@@ -7,8 +7,11 @@
 
   {# Import css files for templates. #}
   {% if templates is defined %}
-    {% for template in templates %}
-      <link rel="stylesheet" href="{{ template }}">
+    {% for template in templates.slides %}
+      <link rel="stylesheet" href="{{ template.paths.css }}">
+    {% endfor %}
+    {% for template in templates.screens %}
+      <link rel="stylesheet" href="{{ template.paths.css }}">
     {% endfor %}
   {% endif %}
 
@@ -60,8 +63,14 @@
       },
       "version": "{{ version }}"
     };
+  </script>
 
+  <script type="text/javascript">
     var OS2DISPLAY_CURRENT_USER = {{ user | raw }};
+  </script>
+
+  <script type="text/javascript">
+    var OS2DISPLAY_TEMPLATES = {{ jsonTemplates | raw }};
   </script>
 
   <script src="/proxy/socket.io/socket.io.js"></script>

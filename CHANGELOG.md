@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.2.0
+
+* Merged https://github.com/os2display/admin-bundle/pull/8:
+  - Moved template load from templateService to .twig to speed up initial load and avoid multiple api calls.
+  - Fixed shared channel overview html.
+
 ## 1.1.1
 
 * Merged https://github.com/os2display/admin-bundle/pull/6: Only display the add role modal if the user has admin privileges.
