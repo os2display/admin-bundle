@@ -32,7 +32,7 @@ class MainController extends Controller
         $user = $this->getUser();
         $user->buildRoleGroups();
         $user = $this->get('os2display.api_data')->setApiData($user);
-        $user = $this->get('serializer')
+        $user = $this->get('jms_serializer')
             ->serialize($user, 'json', SerializationContext::create()
                 ->setGroups(array('api'))
                 ->enableMaxDepthChecks());

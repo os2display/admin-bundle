@@ -3,7 +3,8 @@
     "description": "Os2Display admin",
     "type": "symfony-bundle",
     "require": {
-        "twig/extensions": "^1.0"
+        "php": ">=7.2",
+        "twig/twig": "^1.0||^2.0"
     },
     "autoload": {
         "psr-4": {

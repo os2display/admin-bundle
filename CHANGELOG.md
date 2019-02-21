@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.0.0
+
+* Symfony 3.4 version.
+
 ## 1.2.0
 
 * Merged https://github.com/os2display/admin-bundle/pull/8:
