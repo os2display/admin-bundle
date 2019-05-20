@@ -1,4 +1,4 @@
-var gulp = require('gulp-help')(require('gulp'));
+var gulp = require('gulp');
 
 // Plugins.
 var jshint = require('gulp-jshint');
@@ -92,7 +92,7 @@ var sassWatchPath = 'Resources/sass/**/*.scss';
 /**
  * Process SCSS using libsass
  */
-gulp.task('sass', 'Compile sass into minified css', function () {
+gulp.task('sass', function () {
   return gulp.src(sassPath)
   .pipe(sass({
     outputStyle: 'compressed',
@@ -107,7 +107,7 @@ gulp.task('sass', 'Compile sass into minified css', function () {
 /**
  * Run Javascript through JSHint.
  */
-gulp.task('jshint', 'Runs JSHint on js', function () {
+gulp.task('jshint', function () {
   return gulp.src(adminJsPath)
   .pipe(jshint())
   .pipe(jshint.reporter(stylish));
@@ -116,7 +116,7 @@ gulp.task('jshint', 'Runs JSHint on js', function () {
 /**
  * Build single app.js file.
  */
-gulp.task('js', 'Build all custom js files into one minified js file.', function () {
+gulp.task('js', function () {
     return gulp.src(adminJsPath)
     .pipe(concat('os2displayadmin.js'))
     .pipe(ngAnnotate())
@@ -130,7 +130,7 @@ gulp.task('js', 'Build all custom js files into one minified js file.', function
 /**
  * Build single app.js file.
  */
-gulp.task('js-src', 'Report all source files for "js" task.', function () {
+gulp.task('js-src', function () {
   adminJsPath.forEach(function (path) {
     process.stdout.write(path + '\n');
   });
@@ -139,7 +139,7 @@ gulp.task('js-src', 'Report all source files for "js" task.', function () {
 /**
  * Build single assets.js file.
  */
-gulp.task('assets', 'Build all asset js files into one minified js file.', function () {
+gulp.task('assets', function () {
   return gulp.src(adminJsAssets)
   .pipe(concat('assets.js'))
   .pipe(ngAnnotate())
@@ -151,7 +151,7 @@ gulp.task('assets', 'Build all asset js files into one minified js file.', funct
 /**
  * Watch files for changes and run tasks.
  */
-gulp.task('watch', 'Starts a watch to compile sass and js. For use in development.', function () {
+gulp.task('watch', function () {
   gulp.watch(adminJsPath, ['jshint']);
   gulp.watch(sassWatchPath, ['sass']);
 });

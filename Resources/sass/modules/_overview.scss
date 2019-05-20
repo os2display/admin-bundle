@@ -445,8 +445,8 @@
 
   &--publishing-icon {
     position: absolute;
-    top: -5px; // Static since we are working within a static div anyway.
-    left: -5px;
+    top: -10px; // Static since we are working within a static div anyway.
+    right: -5px;
 
     width: 20px;
     height: 20px;

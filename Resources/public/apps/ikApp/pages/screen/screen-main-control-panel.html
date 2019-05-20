@@ -17,11 +17,12 @@
         <label class="cpw--textarea-label">Beskrivelse</label>
         <text-area-widget field="screen.description" placeholder-text="f.eks. Bruges til mødelokale A, B og C"></text-area-widget>
       </div>
-      <div class="cpw--text" data-ng-if="screen.activation_code">
+      <div class="cpw--text">
         <label class="cpw--text-label">Aktiveringskode</label>
         <input type="text" class="cpw--text-input" readonly="readonly" data-ng-model="screen.activation_code">
       </div>
     </form>
+    <itk-header entity="screen" type="screen" event="settings.extra-fields" ng-if="screen.id"></itk-header>
     <form class="cpw--wrapper">
       <div class="cpw--text">
         <label class="cpw--text-label">Grupper</label>

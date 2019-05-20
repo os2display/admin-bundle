@@ -22,6 +22,7 @@ assets:
     - bundles/os2displayadmin/assets/libs/angular-translate.min.js
     - bundles/os2displayadmin/assets/libs/angular-translate-loader-static-files.min.js
   css:
+    - bundles/os2displayadmin/assets/build/bootstrap.min.css
     - bundles/os2displayadmin/css/colorpicker.css
     - bundles/os2displayadmin/css/jquery.datetimepicker.css
     - bundles/os2displayadmin/css/angular-tooltips.min.css

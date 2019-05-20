@@ -1,6 +1,8 @@
 <section class="create-channel--section">
   <div class="create-channel--content--channel-three">
     <div class="create-channel--publishing">
+      <itk-header entity="channel" type="channel" event="settings.extra-fields" ng-if="channel.id"></itk-header>
+
       <label class="create-channel--schedule-label">{{ 'create_channel.heading.scheduling' | translate }}</label>
       <div class="create-channel--schedule">
         <div class="create-channel--schedule-from">

@@ -51,7 +51,7 @@
         </div>
 
         <div class="overview--preview">
-          <ik-channel class="overview--channel-container" ik-channel="channel" ik-width="300" ik-single-slide="false" ik-clickable="true"></ik-channel>
+          <ik-channel class="overview--channel-container" ik-channel="channel" ik-width="300" ik-single-slide="true" ik-clickable="true"></ik-channel>
           <div class="overview--preview-fadeout"></div>
         </div>
       </div>
@@ -61,6 +61,7 @@
         <span data-ng-if="displaySharingOption"><ik-channel-share ik-channel="channel"></ik-channel-share> / </span>
         <ik-delete id="{{ channel.id }}" type="channel" />
       </div>
+      <itk-header class="itk-header" entity="channel" type="channel" event="list.element"></itk-header>
     </div>
     <!-- If overlay display-->
     <div class="overview--channel" data-ng-repeat="channel in channels" data-ng-if="ikOverlay && !loading">
@@ -87,6 +88,7 @@
         <span class="overview--channel-label">{{channel.title}}</span>
         <span class="overview--slide-date">- {{channel.created_at * 1000 | date:'dd.MM.yyyy'}}</span>
       </div>
+      <itk-header class="itk-header" entity="channel" type="channel" event="list.element"></itk-header>
     </div>
     <div class="overview--section" data-ng-show="!loading" ng-if="channels.length === 0">
       Ingen resultater.

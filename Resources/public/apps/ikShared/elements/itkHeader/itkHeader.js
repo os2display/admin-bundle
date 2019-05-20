@@ -41,16 +41,17 @@ angular.module('ikShared').directive('itkHeader', ['busService', '$timeout', '$c
                 busService.$on(returnEvent, function (event, data) {
                     $timeout(function () {
                         if (data.hasOwnProperty('html')) {
-                            html = html + data.html;
+                            var e = angular.element(data.html);
 
-                            var e = $compile(html)(scope);
-                            element.replaceWith(e);
+                            element.append(e);
+                            $compile(e)(scope);
                         }
                     });
                 });
 
                 busService.$emit(event + '.requestItems', {
                     entity: scope.entity,
+                    scope: scope,
                     type: scope.type,
                     returnEvent: returnEvent
                 });

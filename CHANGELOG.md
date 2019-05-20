@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.1.0
+
+* Added support for screen-bundle.
+
 ## 2.0.0
 
 * Symfony 3.4 version.

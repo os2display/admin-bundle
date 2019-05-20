@@ -41,7 +41,6 @@
     <div data-ng-repeat="screen in screens" class="overview--screen" data-ng-show="!loading">
       <div class="overview--screen-link">
         <div class="overview--header">
-          <itk-header entity="screen" type="screen" event="list.element"></itk-header>
           <ik-actions-menu class="overview--header-actions-menu" data-ng-if="currentUser.is_admin">
             <ul>
               <li><ik-delete id="{{ screen.id }}" type="screen"></ik-delete></li>
@@ -57,6 +56,7 @@
         <span class="overview--channel-label">{{screen.title}}</span>
         <span class="overview--slide-date">- {{ screen.created_at * 1000 | date:'dd.MM.yyyy'}}</span>
       </div>
+      <itk-header class="itk-header" entity="screen" type="screen" event="list.element"></itk-header>
     </div>
     <div class="overview--section" data-ng-show="!loading" ng-if="screens.length === 0">
       Ingen resultater.
