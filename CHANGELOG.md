@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.1.1
+
+* Merged PR: https://github.com/os2display/admin-bundle/pull/13:
+  - Print the error-message and not a stacktrace on login error.
+
 ## 2.1.0
 
 * Added support for screen-bundle.
