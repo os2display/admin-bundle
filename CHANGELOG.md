@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.1.2
+
+* Merged PR https://github.com/os2display/admin-bundle/pull/14: Fix errors on user reset form after symfony upgrade.
+* Merged PR https://github.com/os2display/admin-bundle/pull/19: Fixed resetting template.
+
 ## 2.1.1
 
 * Merged PR: https://github.com/os2display/admin-bundle/pull/13:
