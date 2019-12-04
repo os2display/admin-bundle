@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.1.3
+
+* Merged PR https://github.com/os2display/admin-bundle/pull/20: Added option to disable duration selection for slides.
+
 ## 2.1.2
 
 * Merged PR https://github.com/os2display/admin-bundle/pull/14: Fix errors on user reset form after symfony upgrade.
