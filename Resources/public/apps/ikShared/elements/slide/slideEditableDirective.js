@@ -34,33 +34,6 @@ angular.module('ikShared').directive('ikSlideEditable', [
               scope.ikSlide.currentImage = scope.ikSlide.media[0].urls.default_landscape;
             }
           }
-          else if (scope.ikSlide.media_type === 'video') {
-            scope.ikSlide.currentVideo = {
-              'mp4': '',
-              'ogg': '',
-              'webm': ''
-            };
-            if (scope.ikSlide.media.length > 0 && scope.ikSlide.media[0] !== undefined) {
-              if (scope.ikSlide.media.length > 0 && scope.ikSlide.media[0].provider_metadata.length > 0) {
-                // Set current video variable to path to video files.
-                scope.ikSlide.currentVideo = {};
-                if (scope.ikSlide.media[0].provider_metadata[0]) {
-                  scope.ikSlide.currentVideo.mp4 = scope.ikSlide.media[0].provider_metadata[0].reference;
-                }
-                if (scope.ikSlide.media[0].provider_metadata[1]) {
-                  scope.ikSlide.currentVideo.ogg = scope.ikSlide.media[0].provider_metadata[1].reference;
-                }
-                if (scope.ikSlide.media[0].provider_metadata[2]) {
-                  scope.ikSlide.currentVideo.webm = scope.ikSlide.media[0].provider_metadata[2].reference;
-                }
-              }
-
-              // Reload video player.
-              $timeout(function () {
-                element.find('#videoPlayer').load();
-              }, 1000);
-            }
-          }
 
           // Set the currentLogo variable.
           scope.ikSlide.currentLogo = '';
