@@ -12,7 +12,7 @@
       <div data-ng-switch-when="video" class="create-media--video-container">
         <div data-ng-if="media.provider_metadata[0]">
           <video width="100%" controls class="create-media--video">
-            <source data-ng-src="{{media.reference}}" type="video/{{media.format}}">
+            <source data-ng-src="{{mediaEntry.reference}}" type="video/{{mediaEntry.format}}" ng-repeat="mediaEntry in media.provider_metadata">
           </video>
         </div>
         <div class="create-media--currently-encoding" data-ng-if="!media.provider_metadata[0]">
