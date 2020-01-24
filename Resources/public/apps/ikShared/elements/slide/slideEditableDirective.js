@@ -34,6 +34,12 @@ angular.module('ikShared').directive('ikSlideEditable', [
               scope.ikSlide.currentImage = scope.ikSlide.media[0].urls.default_landscape;
             }
           }
+          else if (scope.ikSlide.media_type === 'video') {
+            // Reload video player.
+            $timeout(function () {
+              element.find('#videoPlayer').load();
+            }, 1000);
+          }
 
           // Set the currentLogo variable.
           scope.ikSlide.currentLogo = '';
