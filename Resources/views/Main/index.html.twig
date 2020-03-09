@@ -47,7 +47,7 @@
   <script type="text/javascript">
     window.config = {
       "search": {
-        "address": "{{ search_host_public ? search_host_public : search_host }}",
+        "address": "{{ search_host_public is defined and not search_host_public is null ? search_host_public : search_host }}",
         "index": "{{ search_index }}"
       },
       "sharingService": {
@@ -73,7 +73,7 @@
     var OS2DISPLAY_TEMPLATES = {{ jsonTemplates | raw }};
   </script>
 
-  <script src="{{ search_socket_js ? search_socket_js : '/proxy/socket.io/socket.io.js' }}"></script>
+  <script src="{{ search_socket_js is defined and not search_socket_js is null ? search_socket_js : '/proxy/socket.io/socket.io.js' }}"></script>
 
   {% if app.environment == 'prod' %}
     {% for file in assets.js_prod_assets %}
