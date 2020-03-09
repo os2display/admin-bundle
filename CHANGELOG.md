@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.1.5
+
+* Allowed search_host_public and search_socket_js to not be set in config.yml.
+
 ## 2.1.4
 
 * Merged PR https://github.com/os2display/admin-bundle/pull/22: Changed socket.io.js path to be configurable
