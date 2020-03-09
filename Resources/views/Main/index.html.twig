@@ -73,7 +73,7 @@
     var OS2DISPLAY_TEMPLATES = {{ jsonTemplates | raw }};
   </script>
 
-  <script src="/proxy/socket.io/socket.io.js"></script>
+  <script src="{{ search_socket_js ? search_socket_js : '/proxy/socket.io/socket.io.js' }}"></script>
 
   {% if app.environment == 'prod' %}
     {% for file in assets.js_prod_assets %}
