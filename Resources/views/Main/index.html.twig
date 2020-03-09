@@ -47,7 +47,7 @@
   <script type="text/javascript">
     window.config = {
       "search": {
-        "address": "{{ search_host }}",
+        "address": "{{ search_host_public ? search_host_public : search_host }}",
         "index": "{{ search_index }}"
       },
       "sharingService": {
