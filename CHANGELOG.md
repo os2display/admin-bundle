@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.2.0
+
+* Merged PR https://github.com/os2display/admin-bundle/pull/23 - Feature: Configurable video formats.
+* Merged PR https://github.com/os2display/admin-bundle/pull/24 - Bugfix: Changed authentication flow for search.
+
 ## 2.1.5
 
 * Allowed search_host_public and search_socket_js to not be set in config.yml.
