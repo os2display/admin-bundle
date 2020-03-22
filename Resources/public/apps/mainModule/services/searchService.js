@@ -7,16 +7,33 @@ angular.module('mainModule').service('searchService', ['$q', '$http', 'busServic
   function ($q, $http, busService) {
     'use strict';
 
-    var socket;
-    var token = null;
+    var socket = null;
+
+    function getAuth(reauth) {
+      var deferred = $q.defer();
+
+      var url = 'api/auth/search' + (reauth ? '/reauth' : '');
+
+      $http.get(url)
+        .success(function (data) {
+          deferred.resolve(data.token);
+        })
+        .error(function (data, status) {
+          deferred.reject(status);
+        });
+
+      return deferred.promise;
+    }
 
     /**
      * Connect to the web-socket.
      *
-     * @param deferred
-     *   The is a deferred object that should be resolved on connection.
+     * @param token
+     *   The connection token.
      */
-    function getSocket(deferred) {
+    function getSocket(token) {
+      var deferred = $q.defer();
+
       // Get connected to the server.
       socket = io.connect(window.config.search.address, {
         'query': 'token=' + token,
@@ -27,21 +44,30 @@ angular.module('mainModule').service('searchService', ['$q', '$http', 'busServic
       // Handle error events.
       socket.on('error', function (reason) {
         if (reason === 'Not authorized') {
-          // Try reauth
-          $http.get('api/auth/search/reauth')
-            .success(function (data) {
-              token = data.token;
-              getSocket(deferred);
-            })
-            .error(function (data, status) {
+          getAuth(true).then(
+            function success(token) {
+              getSocket(token).then(
+                function success(socket) {
+                  deferred.resolve(socket);
+                },
+                function error(reason) {
+                  busService.$emit('log.error', {
+                    'cause': reason,
+                    'msg': 'Search socket error.'
+                  });
+                  deferred.reject(reason);
+                }
+              );
+            },
+            function error(reason) {
               busService.$emit('log.error', {
-                'cause': status,
-                'msg': 'Search socket error. Could not reauthorize.'
+                'cause': reason,
+                'msg': 'Search socket error.'
               });
-              deferred.reject(status);
-            });
-        }
-        else {
+              deferred.reject(reason);
+            }
+          );
+        } else {
           busService.$emit('log.error', {
             'cause': reason,
             'msg': 'Search socket error.'
@@ -51,7 +77,7 @@ angular.module('mainModule').service('searchService', ['$q', '$http', 'busServic
       });
 
       socket.on('connect', function () {
-        deferred.resolve('Connected to the server.');
+        deferred.resolve(socket);
       });
 
       // Handle disconnect event (fires when disconnected or connection fails).
@@ -61,6 +87,8 @@ angular.module('mainModule').service('searchService', ['$q', '$http', 'busServic
         // request will be queued and send all at once... which could give some
         // strange side effects in the application if not handled.
       });
+
+      return deferred.promise;
     }
 
     /**
@@ -73,27 +101,39 @@ angular.module('mainModule').service('searchService', ['$q', '$http', 'busServic
       // Try to connect to the server if not already connected.
       var deferred = $q.defer();
 
-      if (socket === undefined) {
-        if (token !== null) {
-          getSocket(deferred);
-        }
-        else {
-          $http.get('api/auth/search')
-            .success(function (data) {
-              token = data.token;
-              getSocket(deferred);
-            })
-            .error(function (data, status) {
-              busService.$emit('log.error', {
-                'cause': status,
-                'msg': 'Authentication (search) to search node failed (' + status + ')'
-              });
-              deferred.reject(status);
-            });
-        }
+      if (socket === null) {
+        getAuth().then(
+          function success(token) {
+            getSocket(token).then(
+              function success(socket) {
+                deferred.resolve(socket);
+              },
+              function error() {
+                deferred.reject('Error connecting to search service.');
+              }
+            );
+          },
+          function error() {
+            getAuth(true).then(
+              function success(token) {
+                getSocket(token).then(
+                  function success(socket) {
+                    deferred.resolve(socket);
+                  },
+                  function error() {
+                    deferred.reject('Error connecting to search service.');
+                  }
+                );
+              },
+              function error() {
+                deferred.reject('Error re-authenticating to search service.');
+              }
+            );
+          }
+        );
       }
       else {
-        deferred.resolve('Connected to the server.');
+        deferred.resolve(socket);
       }
 
       return deferred.promise;
@@ -165,23 +205,31 @@ angular.module('mainModule').service('searchService', ['$q', '$http', 'busServic
         'error': 'error-' + query.uuid
       };
 
-      connect().then(function () {
-        socket.once(query.callbacks.hits, function (hits) {
-          busService.$emit(message.callbacks.hits, hits);
-        });
+      connect().then(
+        function success(socket) {
+          socket.once(query.callbacks.hits, function (hits) {
+            busService.$emit(message.callbacks.hits, hits);
+          });
 
-        // Catch search errors.
-        socket.once(query.callbacks.error, function (error) {
+          // Catch search errors.
+          socket.once(query.callbacks.error, function (error) {
+            busService.$emit('log.error', {
+              'cause': error.message,
+              'msg': 'Search error.'
+            });
+
+            busService.$emit(message.callbacks.error, error.message);
+          });
+
+          socket.emit('search', query);
+        },
+        function error() {
           busService.$emit('log.error', {
             'cause': error.message,
             'msg': 'Search error.'
           });
-
-          busService.$emit(message.callbacks.error, error.message);
-        });
-
-        socket.emit('search', query);
-      });
+        }
+      );
     });
   }
 ]);
