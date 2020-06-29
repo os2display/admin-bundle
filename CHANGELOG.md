@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 2.2.1
+
+* Merged PR https://github.com/os2display/admin-bundle/pull/25 - Feature: Add screen admin.
+
 ## 2.2.0
 
 * Merged PR https://github.com/os2display/admin-bundle/pull/23 - Feature: Configurable video formats.
