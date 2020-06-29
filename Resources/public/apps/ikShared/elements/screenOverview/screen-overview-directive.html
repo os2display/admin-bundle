@@ -41,7 +41,7 @@
     <div data-ng-repeat="screen in screens" class="overview--screen" data-ng-show="!loading">
       <div class="overview--screen-link">
         <div class="overview--header">
-          <ik-actions-menu class="overview--header-actions-menu" data-ng-if="currentUser.is_admin">
+          <ik-actions-menu class="overview--header-actions-menu" ng-if="userIsScreenAdmin">
             <ul>
               <li><ik-delete id="{{ screen.id }}" type="screen"></ik-delete></li>
               <li><ik-action-reload-screen id="{{ screen.id }}"></ik-action-reload-screen></li>

@@ -20,6 +20,9 @@ angular.module('ikShared').directive('ikScreenOverview', [
       controller: function($scope, $filter, $controller, screenFactory, userService, busService) {
         $controller('BaseSearchController', {$scope: $scope});
 
+        var roles = Object.keys($scope.currentUser.roles);
+        $scope.userIsScreenAdmin = $scope.currentUser.is_admin || roles.indexOf('ROLE_SCREEN_ADMIN') !== -1;
+
         // Get filter selection "all/mine" from localStorage.
         $scope.showFromUser = localStorage.getItem('overview.media.search_filter_default') ?
           localStorage.getItem('overview.media.search_filter_default') :
