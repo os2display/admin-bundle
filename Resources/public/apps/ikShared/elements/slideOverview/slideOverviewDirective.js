@@ -87,6 +87,13 @@ angular.module('ikShared').directive('ikSlideOverview', ['busService', '$filter'
         });
 
         /**
+         * Update search result on slide deletion.
+         */
+        $scope.$on('slide-cloned', function (data) {
+          $scope.updateSearch();
+        });
+
+        /**
          * Updates the search filter based on current orientation and user
          */
         $scope.setSearchFilters = function setSearchFilters() {

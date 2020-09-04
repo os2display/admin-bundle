@@ -98,6 +98,7 @@ modules:
       - bundles/os2displayadmin/apps/ikShared/elements/actionReloadScreen/actionReloadScreenDirective.js
       - bundles/os2displayadmin/apps/ikShared/elements/sharedChannel/sharedChannelDirective.js
       - bundles/os2displayadmin/apps/ikShared/elements/sharedChannelOverview/sharedChannelOverview.js
+      - bundles/os2displayadmin/apps/ikShared/elements/clone/cloneDirective.js
       - bundles/os2displayadmin/apps/ikShared/elements/channel/channelDirectives.js
       - bundles/os2displayadmin/apps/ikShared/elements/channelOverview/channelOverviewDirective.js
       - bundles/os2displayadmin/apps/ikShared/elements/pager/pagerDirective.js

@@ -90,6 +90,13 @@ angular.module('ikShared').directive('ikChannelOverview', [
         });
 
         /**
+         * Update search result on channel cloning.
+         */
+        $scope.$on('channel-cloned', function() {
+          $scope.updateSearch();
+        });
+
+        /**
          * Returns true if channel is in selected channels array.
          *
          * @param channel

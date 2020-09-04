@@ -22,7 +22,7 @@
               </div>
               {% block sonata_user_login_error %}
                 {% if error %}
-                  <div class="login--alert">{{ error|trans({}, 'FOSUserBundle') }}</div>
+                  <div class="login--alert">{{ error.messageKey|trans({}, 'FOSUserBundle') }}</div>
                 {% endif %}
               {% endblock %}
 

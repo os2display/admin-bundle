@@ -57,7 +57,8 @@
       <div class="overview--info-texts">
         <span class="overview--slide-label">{{slide.title}}</span>
         <span class="overview--slide-date">- {{slide.created_at * 1000 | date:'dd.MM.yyyy'}}</span>
-        <ik-delete id="{{ slide.id }}" type="slide" />
+        <ik-delete id="{{ slide.id }}" type="slide"></ik-delete> /
+        <ik-clone entityid="{{ slide.id }}" type="slide"></ik-clone>
       </div>
     </div>
     <!-- If overlay display-->
